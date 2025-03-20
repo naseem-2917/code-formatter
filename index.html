@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Formatter</title>
+  <!-- Prism Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Code Formatter</h1>
+      <p class="subtitle">Formatting Project by Naseem Khan</p>
+      <!-- Dark Mode Toggle Button -->
+      <button id="themeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <div class="input-section">
+      <div class="language-group">
+        <label for="languageSelect">Language:</label>
+        <select id="languageSelect">
+          <option value="auto">Auto-detect</option>
+          <option value="html">HTML</option>
+          <option value="plsql">PL/SQL</option>
+          <option value="javascript">JavaScript</option>
+          <option value="c">C</option>
+          <option value="python">Python</option>
+          <option value="css">CSS</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="file-upload-group">
+        <input type="file" id="fileInput" hidden>
+        <button id="browseButton">📁 Browse Files</button>
+        <span id="fileName">No file selected</span>
+      </div>
+      <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+    </div>
+
+    <div class="actions">
+      <button id="formatButton">✨ Format Code</button>
+      <button id="copyButton">📋 Copy</button>
+    </div>
+
+    <div id="loading" class="loading-hidden">
+      <div class="spinner"></div>
+      <span>Formatting...</span>
+    </div>
+
+    <section class="output-section">
+      <div class="output-header">
+        <h2>Formatted Code</h2>
+      </div>
+      <pre id="formattedCode"><code class="language-"></code></pre>
+    </section>
+
+    <!-- Live Preview Section -->
+    <section class="live-preview-section">
+      <h2>Live Preview</h2>
+      <!-- The sandbox attribute here disallows form submissions -->
+      <iframe id="livePreview" sandbox="allow-scripts allow-same-origin"></iframe>
+    </section>
+
+    <div id="toast" class="toast-hidden"></div>
+  </main>
+
+  <!-- Required Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/esprima/4.0.1/esprima.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/escodegen/2.0.0/escodegen.min.js"></script>
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>

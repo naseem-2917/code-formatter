@@ -1,0 +1,278 @@
+/* Universal Box-Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Root Variables & Dark Mode Support */
+:root {
+  --primary-color: #4CAF50;
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #cccccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1e1e1e;
+    --text-color: #d4d4d4;
+    --border-color: #3c3c3c;
+  }
+}
+
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Input Sections */
+.input-section {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  resize: vertical;
+}
+
+/* File Upload Section */
+.file-upload-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#browseButton {
+  background: var(--primary-color);
+  padding: 0.5rem 1rem;
+}
+
+#fileName {
+  color: #666;
+  font-style: italic;
+}
+
+/* Actions (Buttons) */
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Output Section */
+.output-section {
+  margin-top: 2rem;
+}
+
+pre {
+  position: relative;
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Loading Spinner */
+.loading-hidden {
+  display: none;
+}
+
+#loading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast Notifications */
+.toast-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  #toast {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Live Preview Section */
+.live-preview-section {
+  margin-top: 2rem;
+}
+
+.live-preview-section iframe {
+  width: 100%;
+  height: 300px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+}
+
+/* Dark Mode Styling */
+.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #d4d4d4;
+  --border-color: #3c3c3c;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.dark-mode .container {
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+}
+
+.dark-mode textarea {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.dark-mode pre {
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+}
+
+/* Dark Mode Overrides for Formatted Code */
+.dark-mode pre,
+.dark-mode pre code,
+.dark-mode .prism {
+  background-color: var(--bg-color) !important;
+  box-shadow: none !important;
+  color: var(--text-color) !important;
+}
+
+/* Force Prism to respect dark mode */
+.dark-mode code[class*="language-"],
+.dark-mode pre[class*="language-"] {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border: none !important;
+}
+
+/* Example override for some Prism tokens (adjust as you prefer) */
+.dark-mode .token.comment,
+.dark-mode .token.prolog,
+.dark-mode .token.doctype,
+.dark-mode .token.cdata {
+  color: #999999 !important;
+  /* Lighter gray for comments */
+}
+
+.dark-mode .token.punctuation {
+  color: #c5c8c6 !important;
+}
+
+.dark-mode .token.property,
+.dark-mode .token.tag,
+.dark-mode .token.boolean,
+.dark-mode .token.number,
+.dark-mode .token.constant,
+.dark-mode .token.symbol,
+.dark-mode .token.deleted {
+  color: #CC6666 !important;
+}
